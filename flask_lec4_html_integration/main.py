@@ -1,3 +1,11 @@
+#Jinja 2 templates
+'''
+{%..%} for statement 
+{{ }} expression to print o/p
+{#..#} for comments 
+'''
+
+
 from flask import Flask,redirect,url_for, render_template,request
 app=Flask(__name__)
 
@@ -31,14 +39,17 @@ def Submit():
         science=float(request.form['Science'])
         math=float(request.form['Maths'])
         dat_science=float(request.form['DataScience'])
-        total_score = int((science+math+dat_science)/3)
-    resu=""
-    if int(total_score)>=50:
-        resu="Success"
+        total_score = (science+math+dat_science)/3
+
+    res=''
+    if total_score>=50:
+        res='PASS'
     else:
-        resu="fail"
-   
-    return render_template('result.html',result=resu)
+        res='FAIL'
+    exp={'your score':total_score, 'your result':res}
+    
+    # return render_template('result.html',result=total_score)
+    return render_template('result2.html',result=exp)
     
 
 if __name__=='__main__':

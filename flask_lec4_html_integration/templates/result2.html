@@ -6,11 +6,13 @@
     <title>Result Page</title>
 </head>
 <body>
-    {% if result>=50 %}
-        <h2>"Success"  {{result}} </h2>
-    {% else %}
-        <h2> "fail" {{result}} </h2>
-    {% endif %}
-
+<table>
+    {% for k,v in result.items() %}
+    <tr>
+        <th>{{ k }}</th>
+        <th>{{ v }}</th>
+    </tr>
+    {% endfor %}
+</table>
 </body>
 </html>
